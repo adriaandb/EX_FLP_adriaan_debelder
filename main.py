@@ -1,16 +1,19 @@
-# This is a sample Python script.
+import mod_vertalers as mv
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+lijst={}
+lijst=mv.de_vertalers_antwerpen
 
+def toon_tolk_taal(lijst):
+    print("-------------------------------")
+    print("beschikbare vertalers van je regio, plus de talen die ze geven:")
+    for key, value in lijst.items():
+        if lijst[key]["beschikbaar"] == "ja":
+            print(key)
+            for x in value:
+                print(value[x])
+                #if lijst[key]=="talen":
+                    #print(value(x))
+                    #for y in x:
+                       # print(x[y])
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+toon_tolk_taal(lijst)
