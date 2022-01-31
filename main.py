@@ -3,17 +3,25 @@ import mod_vertalers as mv
 lijst={}
 lijst=mv.de_vertalers_antwerpen
 
-def toon_tolk_taal(lijst):
-    print("-------------------------------")
-    print("beschikbare vertalers van je regio, plus de talen die ze geven:")
-    for key, value in lijst.items():
-        if lijst[key]["beschikbaar"] == "ja":
-            print(key)
-            for x in value:
-                print(value[x])
-                #if lijst[key]=="talen":
-                    #print(value(x))
-                    #for y in x:
-                       # print(x[y])
 
-toon_tolk_taal(lijst)
+def toon_moedertaal(lijst):
+    print("-------------------------------")
+    print("lijst van vertalers met moedertaal naar keuze:")
+    taal=input("toon vertalers die taal naar keuze machtig zijn")
+    for key, value in lijst.items():
+        print("Naam: " + key + "',Moedertaal: " + lijst[key]["moedertaal"] + ", Beschikbaar: " + lijst[key][
+            "beschikbaar"])
+        for tl in value:
+            print(value[tl])
+            if tl == "talen":
+                # print(value[x])
+
+                for y in value[tl]:
+                    if value[y]==taal:
+                        print("gelukt")
+                    else:
+                        pass
+                    #print(y)
+
+
+toon_moedertaal(lijst)

@@ -107,6 +107,31 @@ def del_tolk(lijst):
 def add_taal(lijst):
     print("-------------------------------")
     print("Voeg taal toe aan vertaler:")
+    naam = str(input("Naam van de vertaler:"))
+    '''
+    naamlengte = len(naam)
+    asciilijst = []
+    for i in range(naamlengte):
+        asciilijst.append(ord(naam[i]))
+        for x in asciilijst:
+            if (x < 65 or x > 90) and (x < 97 or x > 122):
+                naamkanniet = "j"
+    if naamkanniet == "j":
+        print("de naam bevat tekens, gelieve enkel karakters te gebruiken")
+        naam = str(input("Naam van de vertaler:"))
+'''
+    talen=lijst[naam]["talen"]
+    print(naam+"beheerst de talen:")
+    print(talen)
+    taal=""
+    while not taal== "stop":
+        taal=input("geef een taal op:")
+        if not taal=="stop":
+            talen.append(taal)
+
+    lijst[naam]["talen"]=talen
+    print(naam+" is nu de volgende talen machtig:"+lijst[naam]["talen"])
+
 
 # ---------------------------------------------------------------------------
 #Reserveer een vertaler
@@ -114,6 +139,9 @@ def add_taal(lijst):
 def res_tolk(lijst):
     print("-------------------------------")
     print("Reserveer een vertaler:")
+    naam=input("geef naam op van de vertaler die je wilt reserveren:")
+    lijst[naam]["beschikbaar"]="nee"
+    toon_tolken(lijst)
 
 # ---------------------------------------------------------------------------
 #Toon lijst van vertalers met moedertaal naar keuze
@@ -121,6 +149,19 @@ def res_tolk(lijst):
 def toon_moedertaal(lijst):
     print("-------------------------------")
     print("lijst van vertalers met moedertaal naar keuze:")
+    taal=input("toon vertalers die taal naar keuze machtig zijn")
+    for key, value in lijst.items():
+            for x in value:
+                # print(value[x])
+                if x == "talen":
+                    # print(value[x])
+                    for y in value[x]:
+                        if lijst[key]["talen"] == taal:
+                            print("Naam: " + key + "',Moedertaal: " + lijst[key]["moedertaal"] + ", Beschikbaar: " + lijst[key][
+                "beschikbaar"])
+                            print(y)
+
+
 
 # ---------------------------------------------------------------------------
 
